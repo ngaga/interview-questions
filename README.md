@@ -1,2 +1,2 @@
 # interview-questions
-save my practice here
+Small exercices to practice and test new things.

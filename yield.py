@@ -1,5 +1,8 @@
 # TODO: read this https://google.github.io/styleguide/pyguide.html
 # TODO: try pylint
+# TODO: test this https://wiki.python.org/moin/Generators
+
+import numpy
 
 def isPrime(n):
     if n % 2 == 0:
@@ -23,3 +26,5 @@ def primeGreaterThan(n):
     for i in nombres_premiers():
         if i >= n:
             return i
+
+print(primeGreaterThan(101548))

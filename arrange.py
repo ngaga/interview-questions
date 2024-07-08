@@ -27,3 +27,11 @@ def arrange(remain, build):
     
 
 arrange([1, 2, 3, 4], [])
+
+
+# note
+# import itertools as it
+
+# permutations = it.permutations([1,2,3], 3)
+# for permutation in permutations:
+#     print(permutation)

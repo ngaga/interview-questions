@@ -1,3 +1,22 @@
+#takes two sorted arrays and returns the sorted merge
+# not in place
+def merge(a, b):
+    res = []
+    i = j = 0
+    while i < len(a) or j < len(b):
+        print (i, j)
+        print(res)
+        if a[i] < b[j]:
+            res.append(a[i])
+            i += 1
+        else:
+            res.append(b[j])
+            j += 1
+    return res
+
+
+
+
 # assume that values are not equal in arr
 def sort(arr):
     # Stopping condition for the reccurence
@@ -53,7 +72,15 @@ def sort(arr):
 
 
 
-# test main
-arr = [99, 1, 4, 2, 9, 54, 6]
-sort(arr)
-print("sorted: ", arr)
+def test1():
+    arr = [99, 1, 4, 2, 9, 54, 6]
+    sort(arr)
+    print("sorted: ", arr)
+
+def test2():
+    a = [1]
+    b = [2]
+    m = merge(a, b)
+    print("merged: ", m)
+
+test2()

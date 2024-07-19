@@ -3,7 +3,7 @@
 def merge(a, b):
     res = []
     i = j = 0
-    while i < len(a) or j < len(b):
+    while i < len(a) and j < len(b):
         print (i, j)
         print(res)
         if a[i] < b[j]:
@@ -12,9 +12,38 @@ def merge(a, b):
         else:
             res.append(b[j])
             j += 1
+    while i < len(a):
+        res.append(a[i])
+        i += 1
+    while j < len(b):
+        res.append(b[j])
+        j += 1
+
     return res
 
+#assume that res has allocated size of len(a) + len(b)
+def mergeInPlace(a, b, res):
+    i = j = k = 0
+    while i < len(a) and j < len(b):
+        if a[i] < b[j]:
+            res[k] = a[i]
+            i += 1
+        else:
+            res[k] = b[j]
+            j += 1
+        k += 1
+    
+    while i < len(a):
+        res[k] = a[i]
+        i += 1
+        k += 1
+    
+    while j < len(b):
+        res[k] = b[j]
+        j += 1
+        k += 1
 
+    
 
 
 # assume that values are not equal in arr
@@ -78,9 +107,16 @@ def test1():
     print("sorted: ", arr)
 
 def test2():
-    a = [1]
-    b = [2]
+    a = [1,3]
+    b = [2,4]
     m = merge(a, b)
     print("merged: ", m)
 
-test2()
+def test3():
+    a = [1,3, 9, 10, 11]
+    b = [2,4]
+    r = (len(a) + len(b)) * [0]
+    mergeInPlace(a, b, r)
+    print("merged", r)
+
+test3()

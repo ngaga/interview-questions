@@ -1,5 +1,15 @@
+def isSpecial(s : str) -> bool:
+    return all(s[i] == s[0] for i in range(len(s))) 
+
+#TODO
 def generateSpecialSubstrings(s : str) -> list[str]:
-    return [char for char in s]
+    result = []
+    for i in range(len(s)):
+        for j in range(len(s)):
+            tmp = s[i:j]
+            if isSpecial(tmp): 
+                result.append(tmp)
+    return result 
 
 def isPresentThrice(s : str, substring : str) -> bool:
     count = 0
@@ -21,3 +31,10 @@ def getLongestSpecialThrice(input : str) -> int:
 print(getLongestSpecialThrice("aaaa"))
 print(getLongestSpecialThrice("abcdef"))
 print(getLongestSpecialThrice("abcaba"))
+
+# print(isSpecial("abc"))
+# print(isSpecial("aa"))
+# print(isSpecial("a"))
+# print(isSpecial("ccc"))
+
+

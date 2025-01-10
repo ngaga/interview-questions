@@ -28,5 +28,7 @@ print(selectUniversal(["amazon","apple","facebook","google","leetcode"], ["e","o
 # Output: ["facebook","google","leetcode"]
 print(selectUniversal(["amazon","apple","facebook","google","leetcode"], ["l","e"]))
 # Output: ["apple","google","leetcode"]
+print(selectUniversal(["amazon","apple","facebook","google","leetcode"], ["e","oo"]))
+# Output ["facebook","google"]
  
 

@@ -1,6 +1,15 @@
+#TODO: make this more efficient.
 def isSubset(word : str, potentialSubset : str) -> bool:
-    # TODO: this will not handle multiplicity correctly
-    return all(c in word for c in potentialSubset)
+    # Make a deep copy
+    wordCopy = word[:]
+    for i, c in enumerate(potentialSubset):
+        if c not in wordCopy:
+            return False
+        else:
+            print(c)
+            wordCopy = wordCopy.replace(c,'',1)
+            print(wordCopy)
+    return True
 
 
 def isUniversal(word : str, potentialSubsets : list[str]) -> bool:

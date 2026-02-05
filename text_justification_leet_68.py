@@ -1,18 +1,43 @@
+class WordAndFollowingSpaces():
+    def __init__(self, wordString) -> None:
+        self.wordString = wordString
+        self.number_of_spaces_to_add = 1
+    
+    def build(self):
+        return self.wordString + self.number_of_spaces_to_add * ' '
 
+    def size(self):
+        return len(self.wordString) + self.number_of_spaces_to_add
+
+class Line:
+    def __init__(self) -> None:
+        self.words = []
+
+    def stretch(self, max_width):
+        pass
+
+    def size(self):
+        return sum(w.size() for w in self.words)
+
+
+def stretch_line(line : Line, max_width):
+    result = ""
+    number_of_spaces_to_add = max_width - line.size()
+    print(f"number_of_spaces_to_add {number_of_spaces_to_add}")
+    return result
 
 def build_line(words, current_index, max_width):
     word_next_index = current_index
-    line = ""
-    while len(line) < max_width and word_next_index < len(words):
-        preview_size = len(words[word_next_index]) + len(line)
+    line = Line()
+    while line.size() < max_width and word_next_index < len(words):
+        preview_size = len(words[word_next_index]) + line.size()
         if preview_size > max_width:
             print("Biiiig ", preview_size)
             break
         else:
-            line += words[word_next_index]
-            line += " "
+            line.words.append(WordAndFollowingSpaces(words[word_next_index]))
             word_next_index += 1
-    return line, word_next_index
+    return stretch_line(line, max_width), word_next_index
 
 def justify(words, max_width):
     result = []
@@ -29,5 +54,3 @@ max_width = 16
 
 justified = justify(words, max_width)
 print(*justified, sep='|\n')
-
-

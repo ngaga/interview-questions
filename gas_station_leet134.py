@@ -1,26 +1,26 @@
 def compute_station_index(gas, cost):
     def is_starting_index_valid(gas, cost, start_index):
+        start = True
+        i =  start_index
         tank = gas[start_index]
-        print(f"tank {tank}")
-        if tank <= 0:
-            return False
-        tank -= cost[start_index]
-        i = (start_index + 1) % (len(gas) - 1)
-        while i != start_index:
-            print('nextI', i)
-            tank += gas[i]
-            print(f"tank {tank}")
-            if tank <= 0:
-                return False
+        print(f"tank starting at {tank} at index {i}")
+        while i != start_index or start:
             tank -= cost[i]
+            print(f"moving to next station, consuming to {tank}")
+            if tank < 0:
+                print(f"not enough gas: {tank}")
+                return False
             i += 1
-            i %= (len(gas) - 1)
+            i %= (len(gas))
+            tank += gas[i]
+            print(f"moving, filling tank to {tank} at index {i}")
+            start = False
         return True
 
-    for i in range(len(gas)):
-        print('i ', i)
-        if is_starting_index_valid(gas, cost, i):
-            return i
+    for rr in range(len(gas)):
+        print('i ', rr)
+        if is_starting_index_valid(gas, cost, rr):
+            return rr
     return -1
 
 # gas = [1,2,3,4,5]

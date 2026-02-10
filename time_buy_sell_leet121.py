@@ -1,5 +1,3 @@
-
-
 def profit(prices):
     # buy_index = 0
     # sell_index = len(prices)

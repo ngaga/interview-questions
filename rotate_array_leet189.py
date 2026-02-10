@@ -1,21 +1,26 @@
 def rotate(nums, k):
-    print(nums)
+    def reverse_between_indexes(nums, i, j):
+        while i < j:
+            try:
+                nums[i], nums[j] = nums[j], nums[i]
+            except:
+                print(f"error: i, j {i} {j}")
+                return
+            i += 1
+            j -= 1
+
     l = len(nums)
-    rotated = [0] * l
-    print(rotated)
-    for i, e in enumerate(nums):
-        new_index = (i +  k) % l
-        print(f"i, k, l {i}, {k}, {l}")
-        print(f"new_index {new_index}")
-        rotated[new_index] = e
-    nums[:] = rotated
+    reverse_between_indexes(nums, 0 , l - 1)
+    print(f" l - 1, nums {l -1} {nums}")
+    reverse_between_indexes(nums, 0, k - 1)
+    print(nums)
+    reverse_between_indexes(nums, k, l - 1)
     print(nums)
 
 
-nums = [1,2,3,4,5,6,7]
-k = 3
+nums = [-1]
+k = 2
 
 rotate(nums, k)
 
-
-# Output: [5,6,7,1,2,3,4]
+print(nums)
